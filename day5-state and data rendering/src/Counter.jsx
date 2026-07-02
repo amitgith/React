@@ -3,16 +3,16 @@ import React, { useState } from "react";
 const Counter = () => {
   console.log("Counter is rendering");
   const [count, setCount] = useState(0);
+  console.log(count);
 
   return (
     <div>
       <h1>Count is {count}</h1>
       <button
         onClick={() => {
-          setCount(count + 1);
-          setCount(count + 1);
-          setCount(count + 1);
-          setCount(count + 1);
+          setCount((prev) => {
+            return prev + 1;
+          });
         }}
       >
         Increment
