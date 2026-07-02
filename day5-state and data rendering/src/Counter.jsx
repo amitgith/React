@@ -10,9 +10,9 @@ const Counter = () => {
       <h1>Count is {count}</h1>
       <button
         onClick={() => {
-          setCount((prev) => {
-            return prev + 1;
-          });
+          setCount((prev) => prev + 1);
+          setCount((prev) => prev + 1);
+          setCount((prev) => prev + 1);
         }}
       >
         Increment
