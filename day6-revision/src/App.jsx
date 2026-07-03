@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 
 const App = () => {
-  console.log("App rendering....");
+  console.log("App rendering...");
 
-  const [user, setUser] = useState("ram");
-  let handleClick = () => {
-    setUser("amit");
-  };
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useState({ name: "amit" });
   return (
     <div>
-      <h1>Hello</h1>
-      <h1>User is {user}</h1>
-      <button onClick={handleClick}>Change</button>
+      <h1>Count is - {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <h1>name is - {user.name}</h1>
+      <button
+        onClick={() => {
+          // user.name = "sanjeet";
+          // setUser(user);
+          // setUser({ name: "sanjeet" }); correct
+        }}
+      >
+        Change name
+      </button>
     </div>
   );
 };
