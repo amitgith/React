@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import Contacts from "./Contacts";
 
 const Cards = () => {
-  let arr = [2, 4, 13, 65, 3, 54, 3, 1, 5, 3, 4, 23, 1, 11, 1];
+  const [user, setUser] = useState("");
+  console.log(user);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <div className=" bg-yellow-500">
-      {arr.map((elem,index) => {
-        return <Contacts key={index} />;
-      })}
-      {/* <h1>This is a Cards</h1> */}
+    <div className="flex flex-col gap-5 w-60">
+      <input
+        onChange={(e) => {
+          setUser(e.target.value);
+        }}
+        className="border-2"
+        type="text"
+        placeholder="Name"
+      />
+      <input
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        className="border-2"
+        type="text"
+        placeholder="Email"
+      />
+      <input
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+        className="border-2"
+        type="text"
+        placeholder="Password"
+      />
+      <button className="border-2">Submit</button>
+      <h1>This is Name - {user}</h1>
+      <h1>This is Email - {email}</h1>
+      <h1>This is Password - {password}</h1>
     </div>
   );
 };
