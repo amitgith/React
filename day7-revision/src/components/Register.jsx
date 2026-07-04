@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const Register = ({ setToggle }) => {
   const [formdata, setFormData] = useState({
-    name: "amit",
-    email: "amit@gamil.com",
-    password: "amit",
+    name: "",
+    email: "",
+    password: "",
   });
   const [users, setUsers] = useState([]);
 
@@ -16,6 +16,11 @@ const Register = ({ setToggle }) => {
     e.preventDefault();
     setUsers([...users, formdata]);
     console.log(users);
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
   };
   return (
     <div className="bg-white w-90 p-6 rounded flex flex-col gap-4">
@@ -28,6 +33,7 @@ const Register = ({ setToggle }) => {
           name="name"
           type="text"
           placeholder="Name"
+          required
         />
         <input
           value={formdata.email}
@@ -36,6 +42,7 @@ const Register = ({ setToggle }) => {
           name="email"
           type="text"
           placeholder="Email"
+          required
         />
         <input
           value={formdata.password}
@@ -44,6 +51,7 @@ const Register = ({ setToggle }) => {
           name="password"
           type="password"
           placeholder="Password"
+          required
         />
         <button className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">
           Register
