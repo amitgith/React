@@ -22,9 +22,7 @@ const Login = ({ setToggle }) => {
       <p>
         Didn't have an Account?{" "}
         <span
-          onClick={() => {
-            setToggle(false);
-          }}
+          onClick={() => setToggle((prev) => !prev)}
           className="text-blue-600 cursor-pointer hover:text-blue-700"
         >
           Register here
