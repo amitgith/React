@@ -8,12 +8,13 @@ const App = () => {
   const [users, setUsers] = useState([]);
 
   return (
-    <div className="bg-gray-300 h-screen flex justify-center items-center">
-      {toggle ? (
-        users.map((elem, index) => <UsersCard key={elem} user={elem} />)
-      ) : (
-        <Register setUsers={setUsers} setToggle={setToggle} />
-      )}
+    <div className="bg-gray-300 h-screen">
+      <Register setUsers={setUsers} setToggle={setToggle} />
+      <div className="flex">
+        {users.map((elem, index) => (
+          <UsersCard key={elem} user={elem} />
+        ))}
+      </div>
     </div>
   );
 };
