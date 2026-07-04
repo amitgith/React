@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 const Register = ({ setToggle }) => {
-  const [formdata, setFormData] = useState({});
+  const [formdata, setFormData] = useState({
+    name: "amit",
+    email: "amit@gamil.com",
+    password: "amit",
+  });
   const [users, setUsers] = useState([]);
 
   const handleClick = (e) => {
@@ -18,6 +22,7 @@ const Register = ({ setToggle }) => {
       <h1 className="text-center text-xl">Register</h1>
       <form onSubmit={handleSubmit} action="" className="flex flex-col gap-4">
         <input
+          value={formdata.name}
           onChange={handleClick}
           className="p-2 border border-gray-400 rounded"
           name="name"
@@ -25,6 +30,7 @@ const Register = ({ setToggle }) => {
           placeholder="Name"
         />
         <input
+          value={formdata.email}
           onChange={handleClick}
           className="p-2 border border-gray-400 rounded"
           name="email"
@@ -32,6 +38,7 @@ const Register = ({ setToggle }) => {
           placeholder="Email"
         />
         <input
+          value={formdata.password}
           onChange={handleClick}
           className="p-2 border border-gray-400 rounded"
           name="password"
