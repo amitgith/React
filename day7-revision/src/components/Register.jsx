@@ -6,10 +6,13 @@ const Register = ({ setToggle }) => {
     const { name, value } = e.target;
     setFormData({ ...formdata, [name]: value });
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="bg-white w-90 p-6 rounded flex flex-col gap-4">
       <h1 className="text-center text-xl">Register</h1>
-      <form action="" className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} action="" className="flex flex-col gap-4">
         <input
           onChange={handleClick}
           className="p-2 border border-gray-400 rounded"
