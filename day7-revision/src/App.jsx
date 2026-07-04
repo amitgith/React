@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="bg-gray-300 h-screen flex justify-center items-center">
       {toggle ? (
-        users.map((elem, index) => <UsersCard user={elem} />)
+        users.map((elem, index) => <UsersCard key={elem} user={elem} />)
       ) : (
         <Register setUsers={setUsers} setToggle={setToggle} />
       )}
