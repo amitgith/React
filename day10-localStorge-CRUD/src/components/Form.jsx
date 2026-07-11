@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const Form = ({ setUsers, setToggle, users }) => {
+const Form = ({ setUsers, setToggle, users, updatedData }) => {
   // console.log(users);
 
   let {
@@ -11,6 +11,7 @@ const Form = ({ setUsers, setToggle, users }) => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
+    defaultValues: updatedData,
   });
   //   console.log(data);
   // console.log("errors--", errors);

@@ -18,6 +18,9 @@ const App = () => {
     localStorage.setItem("users", JSON.stringify(filterUser));
   };
 
+  const [updatedData, setUpdatedData] = useState(null);
+  console.log("app mai hu");
+
   return (
     <div className="bg-slate-400 w-full h-screen">
       <Navbar setToggle={setToggle} />
@@ -26,17 +29,24 @@ const App = () => {
           {users.map((elem, index) => {
             return (
               <Usercard
+                setUpdatedData={setUpdatedData}
                 deleteUser={deleteUser}
                 ind={index}
                 user={elem}
                 key={index}
+                setToggle={setToggle}
               />
             );
           })}
         </div>
       ) : (
         <div className="flex justify-center items-center h-[70%] p-2 text-white">
-          <Form setUsers={setUsers} setToggle={setToggle} users={users} />
+          <Form
+            setUsers={setUsers}
+            setToggle={setToggle}
+            users={users}
+            updatedData={updatedData}
+          />
         </div>
       )}
     </div>
