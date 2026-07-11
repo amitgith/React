@@ -13,7 +13,7 @@ const Form = ({ setUsers, setToggle }) => {
     mode: "onChange",
   });
   //   console.log(data);
-  console.log("errors--", errors);
+  // console.log("errors--", errors);
 
   const formSubmit = (data) => {
     console.log(data);

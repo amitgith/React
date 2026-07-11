@@ -4,12 +4,15 @@ import Usercard from "./components/Usercard";
 import Form from "./components/Form";
 
 const App = () => {
-  localStorage.setItem("name", "amit");
-  localStorage.setItem("age", 25);
-  localStorage.setItem("rollno", 3);
-
-  let userName = localStorage.getItem("name");
-  console.log(userName);
+  const obj = {
+    name: "amit",
+    age: 26,
+    address: "C.G.",
+  };
+  localStorage.setItem("users", JSON.stringify(obj));
+  let lsd = localStorage.getItem("users");
+  let res = JSON.parse(lsd);
+  console.log(res);
 
   const [toggle, setToggle] = useState(false);
   const [users, setUsers] = useState([]);
