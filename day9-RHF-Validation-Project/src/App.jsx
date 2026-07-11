@@ -7,7 +7,7 @@ const App = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <div className="bg-slate-400 w-full h-screen">
-      <Navbar />
+      <Navbar setToggle={setToggle} />
       {toggle ? (
         <div className="p-2 flex">
           <Usercard />
