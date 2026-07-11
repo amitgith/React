@@ -9,6 +9,14 @@ const App = () => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
   console.log(users);
+  const deleteUser = (id) => {
+    let filterUser = users.filter((value, index) => {
+      return index !== id;
+    });
+    console.log(filterUser);
+    setUsers(filterUser);
+    localStorage.setItem("users", JSON.stringify(filterUser));
+  };
 
   return (
     <div className="bg-slate-400 w-full h-screen">
@@ -16,7 +24,14 @@ const App = () => {
       {toggle ? (
         <div className="p-2 flex gap-4 flex-wrap">
           {users.map((elem, index) => {
-            return <Usercard users={elem} key={index} />;
+            return (
+              <Usercard
+                deleteUser={deleteUser}
+                ind={index}
+                user={elem}
+                key={index}
+              />
+            );
           })}
         </div>
       ) : (
