@@ -1,11 +1,11 @@
 import React from "react";
 import { Star } from "lucide-react";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setCartItems }) => {
   return (
-    <div className="group bg-white rounded-2xl shadow-md overflow-hidden border hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+    <div className="group bg-white rounded-2xl shadow-md overflow-hidden border hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
       {/* Image */}
-      <div className="h-64 bg-gray-100 flex items-center justify-center p-6 overflow-hidden">
+      <div className="h-64 bg-gray-300 flex items-center justify-center p-6 overflow-hidden">
         <img
           src={product.image}
           alt={product.title}
@@ -47,7 +47,10 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Button */}
-        <button className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition">
+        <button
+          onClick={() => setCartItems((prev) => [...prev, product])}
+          className="w-full bg-sky-500 text-white py-3 rounded-xl hover:bg-sky-800 transition cursor-pointer"
+        >
           Add to Cart
         </button>
       </div>
