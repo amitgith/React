@@ -26,7 +26,7 @@ const Usercard = ({ user, setToggle, deleteUser, ind, setUpdatedData }) => {
           Update
         </button>
         <button
-          onClick={() => deleteUser(ind)}
+          onClick={() => deleteUser(user.id)}
           className="bg-red-700 px-2 py-2 rounded cursor-pointer"
         >
           Delete

@@ -8,32 +8,31 @@ const App = () => {
   const [users, setUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("users")) || [];
   });
-  console.log(users);
+  // console.log(users);
   const deleteUser = (id) => {
     let filterUser = users.filter((value, index) => {
       return index !== id;
     });
-    console.log(filterUser);
+    // console.log(filterUser);
     setUsers(filterUser);
     localStorage.setItem("users", JSON.stringify(filterUser));
   };
 
   const [updatedData, setUpdatedData] = useState(null);
-  console.log("app mai hu");
+  // console.log("app mai hu");
 
   return (
     <div className="bg-slate-400 w-full h-screen">
       <Navbar setToggle={setToggle} />
       {toggle ? (
         <div className="p-2 flex gap-4 flex-wrap">
-          {users.map((elem, index) => {
+          {users.map((elem) => {
             return (
               <Usercard
                 setUpdatedData={setUpdatedData}
                 deleteUser={deleteUser}
-                ind={index}
                 user={elem}
-                key={index}
+                key={elem.id}
                 setToggle={setToggle}
               />
             );
