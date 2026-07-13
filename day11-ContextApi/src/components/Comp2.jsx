@@ -7,7 +7,7 @@ const Comp2 = ({ data }) => {
   return (
     <div>
       Comp2 inside Comp1
-      <Comp3 />
+      <Comp3  data={data} />
     </div>
   );
 };

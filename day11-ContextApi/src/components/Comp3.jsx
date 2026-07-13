@@ -7,7 +7,7 @@ const Comp3 = ({ data }) => {
   return (
     <div>
       Comp3 insid Comp2
-      <Comp4 />
+      <Comp4  data={data}/>
     </div>
   );
 };
