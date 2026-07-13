@@ -10,9 +10,6 @@ const TestComponents = () => {
     <div>
       <h1>All Components</h1>
       <Comp1 data={data} />
-      <Comp2 data={data} />
-      <Comp3 data={data} />
-      <Comp4 data={data} />
     </div>
   );
 };
