@@ -1,13 +1,11 @@
 import React from "react";
 import Comp4 from "./Comp4";
 
-const Comp3 = ({ data }) => {
-  console.log(data);
-
+const Comp3 = () => {
   return (
     <div>
       Comp3 insid Comp2
-      <Comp4  data={data}/>
+      <Comp4 />
     </div>
   );
 };

@@ -1,13 +1,11 @@
 import React from "react";
 import Comp3 from "./Comp3";
 
-const Comp2 = ({ data }) => {
-  console.log(data);
-
+const Comp2 = () => {
   return (
     <div>
       Comp2 inside Comp1
-      <Comp3  data={data} />
+      <Comp3 />
     </div>
   );
 };

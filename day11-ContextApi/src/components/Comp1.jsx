@@ -1,14 +1,12 @@
 import React from "react";
 import Comp2 from "./Comp2";
 
-const Comp1 = ({ data, children }) => {
-  console.log(data);
+const Comp1 = () => {
 
   return (
     <div>
       comp1
-      {/* <Comp2 data={data} /> */}
-      {children}
+      <Comp2 />
     </div>
   );
 };
