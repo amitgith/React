@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ProductCard from "./components/ProductCard";
 import Navbar from "./components/Navbar";
 import Carts from "./components/Carts";
+import { MyShop } from "./context/MyWebsite";
 
 const App = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-  console.log("cartitems", cartItems);
-
+  let { isCartOpen } = useContext(MyShop);
   let products = [
     {
       id: 1,
@@ -282,15 +280,15 @@ const App = () => {
   ];
   return (
     <div className="h-screen p-2 flex flex-col gap-6">
-      <Navbar setIsCartOpen={setIsCartOpen} />
+      <Navbar s />
       {isCartOpen ? (
         <div>
-          <Carts cartItems={cartItems} />
+          <Carts />
         </div>
       ) : (
         <div className="grid grid-cols-5 gap-5">
           {products.map((val) => {
-            return <ProductCard product={val} setCartItems={setCartItems} />;
+            return <ProductCard key={val.id} product={val} />;
           })}
         </div>
       )}

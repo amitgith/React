@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Star } from "lucide-react";
+import { MyShop } from "../context/MyWebsite";
 
-const ProductCard = ({ product, setCartItems }) => {
+const ProductCard = ({ product }) => {
+  let { setCartItems } = useContext(MyShop);
   return (
     <div className="group bg-white rounded-2xl shadow-md overflow-hidden border hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
       {/* Image */}
