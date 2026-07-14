@@ -1,17 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import { MyShop, MyShopProvider } from "./context/MyContext";
 
 const App = () => {
-  console.log("App rendering");
-  // let { count, setCount } = useContext(MyShop);
+  const { count, setCount } = useContext(MyShop);
+  useEffect(() => {
+    console.log("App rendering");
+  }, []);
   return (
     <div>
-      <MyShopProvider>
-        <Home />
-      </MyShopProvider>
+      <h1>count is {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <Home />
       <About />
       <Contact />
     </div>
