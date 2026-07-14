@@ -9,7 +9,6 @@ const App = () => {
   const [toggle, setToggle] = useState(false);
   useEffect(() => {
     console.log("App rendering");
-    console.log("Hey.....");
   }, [toggle]);
   return (
     <div>
@@ -19,7 +18,7 @@ const App = () => {
         Change Toggle state
       </button>
       {/* <Home /> */}
-      {toggle ? <About /> : <Contact />}
+      {toggle ? <Contact /> : <About />}
     </div>
   );
 };
