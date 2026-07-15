@@ -4,8 +4,6 @@ import Navbar from "./components/Navbar";
 import ProductCards from "./components/ProductCards";
 const App = () => {
   const [productsData, setProductsData] = useState([]);
-  console.log(productsData);
-
   const getProductsData = async () => {
     try {
       let res = await axios.get("https://fakestoreapi.com/products");
