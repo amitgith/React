@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Navbar from "./components/Navbar";
 const App = () => {
   const getProductsData = async () => {
     try {
@@ -11,8 +12,8 @@ const App = () => {
   };
   getProductsData();
   return (
-    <div>
-      <h1>Hello</h1>
+    <div className="h-screen p-2">
+      <Navbar />
     </div>
   );
 };
