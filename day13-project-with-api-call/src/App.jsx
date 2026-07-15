@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
+import ProductCards from "./components/ProductCards";
 const App = () => {
+  const [productsData, setProductsData] = useState([]);
+  console.log(productsData);
+
   const getProductsData = async () => {
     try {
       let res = await axios.get("https://fakestoreapi.com/products");
-      console.log(res.data);
+      setProductsData(res.data);
     } catch (error) {
       console.log("error in api", error);
     }
   };
-  getProductsData();
+  useEffect(() => {
+    getProductsData();
+  }, []);
   return (
-    <div className="h-screen p-2">
+    <div className="h-screen p-2 flex flex-col gap-6">
       <Navbar />
+      <div className="grid grid-cols-4 gap-6">
+        {productsData.map((elem) => {
+          return <ProductCards key={elem.id} product={elem} />;
+        })}
+      </div>
     </div>
   );
 };
