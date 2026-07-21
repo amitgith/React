@@ -23,16 +23,17 @@ const LoginPage = () => {
       return val.email === data.email && val.password === data.password;
     });
     if (!user) {
-      toast.error("invalid creds or user not found");
-      reset();
+      toast.error("User not foind or invalid credentails!.");
       return;
     }
     setLoggedInUser(user);
+    toast.success("User Loggined Successfully!");
     localStorage.setItem("loggedinUser", JSON.stringify(user));
-    toast.success("Login Sucessfully");
+    navigate("/main");
+    reset();
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8">
         {/* Heading */}
         <div className="text-center mb-8">
@@ -103,7 +104,7 @@ const LoginPage = () => {
         <p className="text-center text-gray-400 mt-6">
           Don't have an account?{" "}
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/register")}
             to="/register"
             className="text-lime-400 hover:text-lime-300 font-semibold"
           >

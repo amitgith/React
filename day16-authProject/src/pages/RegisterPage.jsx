@@ -21,16 +21,13 @@ const RegisterPage = () => {
   const formSubmit = (data) => {
     let arr = [...registeredUsers, data];
     setRegisteredUsers(arr);
-    setloggedInUser(data);
-    toast.success("Register Sucessfully!");
-    localStorage.setItem("registerUsers", JSON.stringify(arr));
-    localStorage.setItem("loggedinUser", JSON.stringify(data));
-
+    toast.success("User Registered Successfully!");
+    localStorage.setItem("registeredUsers", JSON.stringify(arr));
     reset();
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8">
         {/* Heading */}
         <div className="text-center mb-8">
@@ -121,7 +118,7 @@ const RegisterPage = () => {
         <p className="text-center text-gray-400 mt-6">
           Already have an account?{" "}
           <button
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/")}
             to={"/login"}
             className="text-lime-400 hover:text-lime-300 font-semibold"
           >
