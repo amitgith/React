@@ -10,8 +10,11 @@ export const AuthProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState(
     JSON.parse(localStorage.getItem("loggedinUser")),
   );
-  console.log("registered useers", registeredUsers);
-  console.log("loggedinuser useers", loggedInUser);
+  // console.log("registered useers", registeredUsers);
+  // console.log("loggedinuser useers", loggedInUser);
+
+  const [usersData, setUsersData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
 
   return (
     <Auth.Provider
@@ -20,6 +23,10 @@ export const AuthProvider = ({ children }) => {
         setRegisteredUsers,
         loggedInUser,
         setLoggedInUser,
+        usersData,
+        setUsersData,
+        productsData,
+        setProductsData,
       }}
     >
       {children}
