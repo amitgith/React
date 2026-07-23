@@ -1,37 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router";
 import { Mail, Lock } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { Auth } from "../context/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const LoginPage = () => {
-  const { registeredUsers, loggedInUser, setLoggedInUser } = useContext(Auth);
-  const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-  });
-
-  const formSubmit = (data) => {
-    let user = registeredUsers.find((val) => {
-      return val.email === data.email && val.password === data.password;
-    });
-    if (!user) {
-      toast.error("User not found or invalid credentails!.");
-      reset();
-      return;
-    }
-    setLoggedInUser(user);
-    toast.success("User Loggined Successfully!");
-    localStorage.setItem("loggedinUser", JSON.stringify(user));
-    navigate("/main");
-  };
+  const { register, handleSubmit, loginFormSubmit, navigate, errors } =
+    useAuth();
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8">
@@ -42,7 +16,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(loginFormSubmit)} className="space-y-5">
           {/* Email */}
           <div>
             <label className="block text-gray-300 mb-2 text-sm">

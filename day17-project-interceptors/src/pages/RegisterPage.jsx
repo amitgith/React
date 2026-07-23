@@ -1,32 +1,11 @@
 import React from "react";
 import { User, Mail, Lock } from "lucide-react";
-import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { Auth } from "../context/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const RegisterPage = () => {
-  const { registeredUsers, setRegisteredUsers, setloggedInUser } =
-    useContext(Auth);
-  const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ mode: "onChange" });
-
-  const formSubmit = (data) => {
-    let arr = [...registeredUsers, data];
-    setRegisteredUsers(arr);
-    toast.success("User Registered Successfully!");
-    localStorage.setItem("loggedinUser", JSON.stringify(data));
-    localStorage.setItem("registeredUsers", JSON.stringify(arr));
-    navigate("/main");
-    reset();
-  };
+  const { register, handleSubmit, registerFormSubmit, navigate, errors } =
+    useAuth();
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">
@@ -38,7 +17,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(registerFormSubmit)} className="space-y-5">
           {/* Full Name */}
           <div>
             <label className="block text-gray-300 mb-2 text-sm">
