@@ -23,14 +23,14 @@ const LoginPage = () => {
       return val.email === data.email && val.password === data.password;
     });
     if (!user) {
-      toast.error("User not foind or invalid credentails!.");
+      toast.error("User not found or invalid credentails!.");
+      reset();
       return;
     }
     setLoggedInUser(user);
     toast.success("User Loggined Successfully!");
     localStorage.setItem("loggedinUser", JSON.stringify(user));
     navigate("/main");
-    reset();
   };
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center px-4">

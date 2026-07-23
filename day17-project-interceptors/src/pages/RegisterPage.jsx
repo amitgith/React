@@ -7,9 +7,9 @@ import { Auth } from "../context/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
 const RegisterPage = () => {
-  const navigate = useNavigate();
   const { registeredUsers, setRegisteredUsers, setloggedInUser } =
     useContext(Auth);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -22,7 +22,9 @@ const RegisterPage = () => {
     let arr = [...registeredUsers, data];
     setRegisteredUsers(arr);
     toast.success("User Registered Successfully!");
+    localStorage.setItem("loggedinUser", JSON.stringify(data));
     localStorage.setItem("registeredUsers", JSON.stringify(arr));
+    navigate("/main");
     reset();
   };
 
