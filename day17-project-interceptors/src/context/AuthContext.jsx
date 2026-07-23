@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   const [usersData, setUsersData] = useState([]);
   const [productsData, setProductsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <Auth.Provider
@@ -27,6 +28,8 @@ export const AuthProvider = ({ children }) => {
         setUsersData,
         productsData,
         setProductsData,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

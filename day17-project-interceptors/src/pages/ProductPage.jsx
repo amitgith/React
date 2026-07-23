@@ -5,11 +5,14 @@ import ProductCard from "../components/ProductCard";
 
 const ProductPage = () => {
   const { productsData, setProductsData } = useContext(Auth);
+  const { isLoading, setIsLoading } = useContext(Auth);
+
   const getProductsData = async () => {
     try {
       let res = await axios.get("https://fakestoreapi.com/products");
       setProductsData(res.data);
       console.log(res);
+      setIsLoading(false);
     } catch (error) {
       console.log("Products in error", error);
     }
@@ -17,6 +20,8 @@ const ProductPage = () => {
   useEffect(() => {
     getProductsData();
   }, []);
+
+  if (isLoading) return <h1 className="text-4xl">Loading Products......</h1>;
 
   return (
     <div className="grid grid-cols-4 gap-4">
