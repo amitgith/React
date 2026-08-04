@@ -4,7 +4,8 @@ import { NavLink, useNavigate } from "react-router";
 import { useAuthHook } from "../../../hooks/useAuthHook";
 
 const LoginPage = () => {
-   let {navigate} = useAuthHook;
+  let { navigate, register, loginForm, handleSubmit, reset, errors } =
+    useAuthHook();
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-indigo-100 via-white to-blue-100 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
@@ -22,7 +23,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit(loginForm)} className="space-y-5">
           {/* Email */}
           <div>
             <label className="block text-gray-700 font-medium mb-2">
@@ -32,11 +33,15 @@ const LoginPage = () => {
             <div className="flex items-center border rounded-lg px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500">
               <Mail className="text-gray-400 mr-2" size={20} />
               <input
+                {...register("email", {
+                  required: "Email is required",
+                })}
                 type="email"
                 placeholder="Enter your email"
                 className="w-full outline-none"
               />
             </div>
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
 
           {/* Password */}
@@ -48,11 +53,21 @@ const LoginPage = () => {
             <div className="flex items-center border rounded-lg px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500">
               <Lock className="text-gray-400 mr-2" size={20} />
               <input
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 8,
+                    message: "Minimum 8 characters are required",
+                  },
+                })}
                 type="password"
                 placeholder="Enter your password"
                 className="w-full outline-none"
               />
             </div>
+            {errors.password && (
+              <p className="text-red">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Login Button */}
@@ -69,7 +84,7 @@ const LoginPage = () => {
         <p className="text-center text-gray-600 mt-6">
           Don't have an account?{" "}
           <button
-          onClick={()=>navigate("/register")}
+            onClick={() => navigate("/register")}
             className="text-indigo-600 font-semibold hover:underline"
           >
             Create Account

@@ -4,7 +4,8 @@ import { useNavigate } from "react-router";
 import { useAuthHook } from "../../../hooks/useAuthHook";
 
 const RegisterPage = () => {
-  let { navigate } = useAuthHook;
+  let { navigate, register, registerForm, errors, handleSubmit } =
+    useAuthHook();
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-indigo-100 via-white to-blue-100 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
@@ -24,7 +25,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit(registerForm)} className="space-y-5">
           {/* Username */}
           <div>
             <label className="block text-gray-700 font-medium mb-2">
@@ -34,11 +35,15 @@ const RegisterPage = () => {
             <div className="flex items-center border rounded-lg px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500">
               <User className="text-gray-400 mr-2" size={20} />
               <input
+                {...register("username", {
+                  required: "username is required",
+                })}
                 type="text"
                 placeholder="Enter username"
                 className="w-full outline-none"
               />
             </div>
+            {errors.email && <p className="text-red">{errors.email.message}</p>}
           </div>
 
           {/* Email */}
@@ -50,11 +55,15 @@ const RegisterPage = () => {
             <div className="flex items-center border rounded-lg px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500">
               <Mail className="text-gray-400 mr-2" size={20} />
               <input
+                {...register("email", {
+                  required: "Email is required",
+                })}
                 type="email"
                 placeholder="Enter email"
                 className="w-full outline-none"
               />
             </div>
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
 
           {/* Password */}
@@ -66,11 +75,21 @@ const RegisterPage = () => {
             <div className="flex items-center border rounded-lg px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500">
               <Lock className="text-gray-400 mr-2" size={20} />
               <input
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 8,
+                    message: "Minimum 8 characters are required",
+                  },
+                })}
                 type="password"
                 placeholder="Enter password"
                 className="w-full outline-none"
               />
             </div>
+            {errors.password && (
+              <p className="text-red">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Register Button */}
