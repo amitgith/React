@@ -11,12 +11,12 @@ export const authSlice = createSlice({
     addUser: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
-      //   state.isLoading = true;
+      state.isLoading = false;
     },
     removeUser: (state) => {
       state.user = null;
       state.isAuthenticated = false;
-      //   state.isLoading = false;
+      state.isLoading = false;
     },
   },
 });
