@@ -43,7 +43,9 @@ const RegisterPage = () => {
                 className="w-full outline-none"
               />
             </div>
-            {errors.email && <p className="text-red">{errors.email.message}</p>}
+            {errors.username && (
+              <p className="text-red">{errors.username.message}</p>
+            )}
           </div>
 
           {/* Email */}

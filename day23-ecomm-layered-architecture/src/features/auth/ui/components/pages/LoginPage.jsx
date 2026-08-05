@@ -27,21 +27,21 @@ const LoginPage = () => {
           {/* Email */}
           <div>
             <label className="block text-gray-700 font-medium mb-2">
-              Email
+              Username
             </label>
 
             <div className="flex items-center border rounded-lg px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500">
               <Mail className="text-gray-400 mr-2" size={20} />
               <input
-                {...register("email", {
+                {...register("username", {
                   required: "Email is required",
                 })}
-                type="email"
-                placeholder="Enter your email"
+                type="text"
+                placeholder="Enter your username"
                 className="w-full outline-none"
               />
             </div>
-            {errors.email && <p>{errors.email.message}</p>}
+            {errors.username && <p>{errors.username.message}</p>}
           </div>
 
           {/* Password */}
