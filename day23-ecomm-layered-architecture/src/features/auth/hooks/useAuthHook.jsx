@@ -2,9 +2,12 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { loginUserApi } from "../api/AutHapi";
+import { useDispatch } from "react-redux";
+import { addUser } from "../state/authSlice";
 
 export const useAuthHook = () => {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
   let {
     register,
     handleSubmit,
@@ -20,7 +23,7 @@ export const useAuthHook = () => {
     console.log("register", data);
   };
 
-  const loginForm = async(data) => {
+  const loginForm = async (data) => {
     // let user = registeredUsers.find((val) => {
     //   return val.email === data.email && val.password === data.password;
     // });
@@ -29,14 +32,14 @@ export const useAuthHook = () => {
     //   return;
     // }
 
-  try {
-    let response = await loginUserApi(data)
-    
-  } catch (error) {
-    
-  }
-
-    console.log("login", data);
+    try {
+      let response = await loginUserApi(data);
+      // console.log(response);
+      dispatch(addUser(response));
+      toast.success("User login in");
+    } catch (error) {
+      console.log("from api error", error);
+    }
   };
 
   return {

@@ -1,7 +1,13 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router";
 
 const PublicProtected = () => {
+  let { isAuthenticated, user } = useSelector((store) => store.auth);
+
+  if (user) {
+    return <Navigate to={"/main"} />;
+  }
   return <Outlet />;
 };
 
