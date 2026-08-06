@@ -5,7 +5,7 @@ export const loginUserAction = createAsyncThunk(
   async (credentials, thunkApi) => {
     try {
       console.log("thunk action triggered...");
-      let res = await api.post("auth/login", credentials);
+      let res = await api.post("/auth/login", credentials);
       localStorage.setItem("accessToken", res.data.accessToken);
       return res.data;
     } catch (error) {
