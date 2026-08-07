@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import { loginUserApi } from "../api/AutHapi";
+// import { loginUserApi } from "../api/AutHapi";
 import { useDispatch } from "react-redux";
 import { addUser } from "../state/authSlice";
 import { loginUserAction } from "./authAction";
@@ -23,7 +23,6 @@ export const useAuthHook = () => {
   const loginForm = async (data) => {
     try {
       dispatch(loginUserAction(data));
-      toast.success("User login in");
     } catch (error) {
       console.log("from api error", error);
     }
