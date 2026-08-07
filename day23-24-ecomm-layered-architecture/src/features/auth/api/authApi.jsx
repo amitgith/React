@@ -1,8 +1,8 @@
 import { api } from "../../../config/api";
 
-export const loginUserApi = async (credentails) => {
+export const loginUserApi = async (credentials) => {
   try {
-    let res = await api.post("/auth/login", credentails);
+    let res = await api.post("/auth/login", credentials);
     console.log("response from login api", res);
     localStorage.setItem("accessToken", res.data.accessToken);
     return res.data;
